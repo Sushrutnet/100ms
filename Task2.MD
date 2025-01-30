@@ -95,17 +95,15 @@ jobs:
 
 ---
 
-## **Part 2: Linux Shell Script**
+# Part 2: Linux Shell Script
 
-### **Objective:**
+## Objective
 Create a shell script to:
 - Automatically set up a local Kubernetes cluster using Minikube.
 - Install kubectl and configure it to connect to the cluster.
 - Deploy the Flask app using the YAML file from Task 1.
 
-
-
-
+```bash
 #!/bin/bash
 
 set -e  # Exit immediately if a command exits with a non-zero status
@@ -185,5 +183,50 @@ kubectl config use-context minikube
 echo "Verifying Kubernetes cluster..."
 kubectl get all
 
-echo "Minikube setup complete!"
+# Step 8: Deploy the Flask App Using YAML
+echo "Deploying Flask app..."
+kubectl apply -f flask_app.yaml
 
+echo "Minikube setup complete!"
+```
+
+## Instructions
+1. Save the script as `setup_minikube.sh`.
+2. Ensure the Flask app YAML configuration file (`flask_app.yaml`) is available in the same directory.
+3. Run the script with:
+   ```bash
+   chmod +x setup_minikube.sh
+   ./setup_minikube.sh
+   ```
+
+## Example Output
+```bash
+Minikube not installed. Installing Minikube...
+Docker already installed.
+Adding user to the Docker group...
+kubectl already installed.
+Starting Minikube with Docker as the driver...
+Setting kubectl to use Minikube context...
+Verifying Kubernetes cluster...
+Deploying Flask app...
+Minikube setup complete!
+```
+
+### Troubleshooting
+- **Permission Issues with Docker:**
+  Run the following command and log in again:
+  ```bash
+  sudo usermod -aG docker $USER
+  newgrp docker
+  ```
+- **Minikube Startup Errors:**
+  Check Docker installation and ensure it's running.
+- **kubectl Not Found:**
+  Verify the PATH variable includes `/usr/local/bin/`.
+
+### Additional Notes
+- This script uses the `set -e` flag to exit on any errors.
+- Make sure your system meets the [Minikube system requirements](https://minikube.sigs.k8s.io/docs/start/).
+
+### License
+This project is licensed under the MIT License.
