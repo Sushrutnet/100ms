@@ -15,15 +15,20 @@ Steps:
 Set up CloudWatch monitoring to track key metrics (CPU, memory usage) for the EKS cluster.
 Created a custom CloudWatch dashboard to monitor the health of the Flask app, CPU, and memory usage.
 Integrated the monitoring with the Flask app to ensure smooth operations and visibility.
+CloudWatch Dashboard:
+Click here to view the CloudWatch dashboard
+
 3. Outcome:
 The Flask app is successfully deployed on AWS EKS and accessible via a public endpoint.
 Monitoring is set up using CloudWatch, ensuring that the app’s health and resource usage are continuously tracked.
+Live App:
+Click here to access the live Flask app
+
 Technologies Used:
 AWS EKS
 Terraform
 Docker
 Kubernetes
 AWS CloudWatch
-This deployment showcases my experience with cloud infrastructure, containerization, and monitoring in production environments, ensuring scalability and high availability.
-
-Please let me know if you need any further details or would like to discuss my work in more depth.
+You can also find the source code and Terraform configuration files in the GitHub repository:
+GitHub Repository
